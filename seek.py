@@ -8,6 +8,20 @@ if len(sys.argv[1:])==0:
 else:
     search_term = ' '.join(sys.argv[1:])
 
+headers = {'user-agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0'}
+r = requests.get("https://google.com/search?q={}".format(search_term),headers=headers)
+
+s = BeautifulSoup(r.text,'html.parser')
+links = s.select('.r a')
+head = s.findAll('div',attrs={'class':'kp-header'})
+
+if len(head) !=0 :
+    print('Found an extra header!')
+    contents = s.findAll('div',attrs={'class':'i4J0ge'})
+    if len(contents) != 0:
+        for i in contents:
+            print('  '.join(i.text.split()))
+
 save = input("Do you want to save the search results in a folder? ('y' or 'n')\n")
 save = True if save=='y' else False
 if save:
@@ -19,13 +33,6 @@ if save:
         pass
 
     os.chdir(dir)
-    dir = search_term.replace(' ','_')
-
-headers = {'user-agent':'MyProj'}
-r = requests.get("https://google.com/search?q={}".format(search_term),headers=headers)
-
-s = BeautifulSoup(r.text,'html.parser')
-links = s.select('.r a')
 
 results = []
 
@@ -37,13 +44,12 @@ for i in range(0,5):
     try:
         #webbrowser.open(results[i])
         title = results[i][1]
-        temp_url = results[i][0]
+        url = results[i][0]
 
-        url = temp_url[temp_url.index('http',1):]
-        print('------ ',results[i][1].upper(),'----->\n')
+        print('------ ',title.upper(),'----->\n')
         print('------ ','URL :',url,'----->\n')
 
-        r = requests.get(temp_url,headers={'user-agent':'boom-boom'})
+        r = requests.get(url,headers=headers)
         s = BeautifulSoup(r.text,'html.parser')
         p = s.select('p')
 
@@ -55,5 +61,5 @@ for i in range(0,5):
 
     except KeyboardInterrupt:
         exit()
-    except requests.exceptions.ConnectionError:
+    except:
         pass
