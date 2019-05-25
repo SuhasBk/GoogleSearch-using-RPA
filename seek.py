@@ -8,7 +8,7 @@ if len(sys.argv[1:])==0:
 else:
     search_term = ' '.join(sys.argv[1:])
 
-headers = {'user-agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0'}
+headers = {'User-Agent':'Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0'}
 r = requests.get("https://google.com/search?q={}".format(search_term),headers=headers)
 
 s = BeautifulSoup(r.text,'html.parser')
