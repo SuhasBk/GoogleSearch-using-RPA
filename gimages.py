@@ -9,7 +9,10 @@ if len(sys.argv[1:])==0:
 search_term = '_'.join(sys.argv[1:])
 os.mkdir(search_term)
 os.chdir(search_term)
-r = requests.get("https://www.google.com/search?tbm=isch&q={}".format(search_term),headers={'user-agent':'firefox'})
+
+headers = {'User-Agent':'Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0'}
+
+r = requests.get("https://www.google.com/search?tbm=isch&q={}".format(search_term),headers=headers)
 s = BeautifulSoup(r.text,'html.parser')
 
 images = s.select('img')
