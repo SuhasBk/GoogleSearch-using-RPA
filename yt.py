@@ -9,7 +9,7 @@ if len(sys.argv[1:])==0:
 else:
     search_term = ' '.join(sys.argv[1:])
 
-headers = {'user-agent':'inspark'}
+headers = {'User-Agent':'Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0'}
 
 try:
     r = requests.get("http://youtube.com/results?search_query=" + '+'.join(search_term),headers=headers)
