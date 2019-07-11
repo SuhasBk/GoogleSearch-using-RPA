@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import re,os,sys
-from subprocess import PIPE,run
+from subprocess import PIPE,Popen
 import requests
 from bs4 import BeautifulSoup
 
@@ -70,6 +70,9 @@ while True:
                     run("youtube-dl --extract-audio --audio-format mp3 "+j,shell=True)
             elif dorv == 'v':
                 print("Streaming...")
-                op = run(['vlc',j],stderr=PIPE,stdout=PIPE)
+                try:
+                    Popen(['vlc',j],stderr=PIPE,stdout=PIPE,close_fds=True)
+                except FileNotFoundError:
+                    Popen([input("Enter your default media player...\nEx: 'mpv','totem' : "),j],stderr=PIPE,stdout=PIPE,close_fds=True)
         elif ch=='exit':
             exit()
