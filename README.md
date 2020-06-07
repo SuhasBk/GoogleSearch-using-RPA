@@ -17,4 +17,4 @@ Search, stream and download YouTube videos using youtube-dl.
 1) requests>=2.21.0
 2) beautifulsoup4>=4.7.1
 3) youtube-dl>=2019.4.7
-4) fake-useragent==0.1.11
+4) fake-useragent>=0.1.11
