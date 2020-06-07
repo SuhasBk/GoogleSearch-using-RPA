@@ -2,7 +2,6 @@
 import requests,sys,webbrowser,os,re
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
-from markdown import markdown
 
 if len(sys.argv[1:])==0:
     search_term = ' '.join(input("Enter the search term\n").split())
