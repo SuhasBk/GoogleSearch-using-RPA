@@ -1,9 +1,5 @@
 # GoogleSearch-using-RPA
 
-# gimages.py:
-
-View Google Images results using PIL library.
-
 # seek.py:
 
 Automation of Google search using web scraping through Python to get faster results (text-	only).
