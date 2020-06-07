@@ -6,7 +6,7 @@ View Google Images results using PIL library.
 
 # seek.py:
 
-Automation of Google search using web scraping through Python to get faster results (text-	only). This tool displays information on screen as well as store it as markdown text in an 	HTML file for each website that is accessed.
+Automation of Google search using web scraping through Python to get faster results (text-	only).
 
 # fetch.py:
 
